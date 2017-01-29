@@ -1,6 +1,8 @@
 package com.patronage.Steps;
 
+import com.patronage.Pages.GooglePage;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,14 +11,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.patronage.Pages.GooglePage;
-
 import cucumber.api.Scenario;
 import cucumber.api.java8.En;
 
 public class GoogleSearch implements En {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver;
     String baseUrl = "google.com";
     GooglePage gp = PageFactory.initElements(driver, GooglePage.class);
 
@@ -25,6 +25,7 @@ public class GoogleSearch implements En {
             driver.quit();
         });
         Given("^user is on start page$", () -> {
+
             driver.get("http://" + baseUrl);
         });
         When("^user provide search phase$", () -> {
